@@ -15,6 +15,18 @@ body {
     padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
+h1 {
+	font-size: 60px;
+}
+
+h5{
+	font-size: 18px;
+	
+}
+
+.dropdown-item{
+	text-align: center;
+}
 .img-portfolio {
     margin-bottom: 30px;
 }
@@ -26,7 +38,7 @@ body {
 /* Home Page Carousel */
 
 header.carousel {
-    height: 50%;
+    height: 80%;
 }
 
 header.carousel .item,
@@ -71,6 +83,7 @@ header.carousel .fill {
 
 footer {
     margin: 50px 0;
+	text-align: center;
 }
 
 /* Responsive Styles */

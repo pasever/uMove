@@ -9,14 +9,15 @@ var config = {
 firebase.initializeApp(config);
 
 //var population = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/cities";
+$("#bar-chart-horizontal").hide();
 
 $(".dropdown-item").on("click", function (e) {
     e.preventDefault();
-    //$(".table").html();
-    $("#chart").empty();
-    //$("#chart").html();
 
+
+    $("#chart").empty();
     $("#images").html("");
+    $("#bar-chart-horizontal").show();
 
 
 
@@ -37,6 +38,8 @@ $(".dropdown-item").on("click", function (e) {
     var queryURL = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/images/";
     var queryURL2 = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/scores/";
     var queryURL3 = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/salaries/";
+    var queryURL4 = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/details/";
+
 
 
 
@@ -186,16 +189,23 @@ $(".dropdown-item").on("click", function (e) {
 
                 var layout = {
                     title: 'Goal Salaries after the BootCamp'
-//                    legend: {
-//                        x: 1,
-//                        y: 1
-//                    }
-
                 };
 
                 Plotly.newPlot('myDiv', data, layout);
 
 
+
+            });
+
+    $.ajax({
+        url: queryURL4,
+        method: "GET"
+
+    })
+            // After data comes back from the request
+            .done(function (response) {
+                var results = response;
+                console.log(results);
 
             });
 
@@ -226,6 +236,8 @@ var grph = {
     }
 
 };
+
+
 
 
 // 51 50 48 46 45 32 
