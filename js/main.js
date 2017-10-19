@@ -10,6 +10,7 @@ firebase.initializeApp(config);
 
 //var population = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/cities";
 $("#bar-chart-horizontal").hide();
+$("#weather").hide();
 
 $(".dropdown-item").on("click", function (e) {
     e.preventDefault();
@@ -109,7 +110,6 @@ $(".dropdown-item").on("click", function (e) {
             .done(function (response) {
 
 
-
                 var salaryName = [];
                 var salaryMin = [];
                 var salaryAvg = [];
@@ -204,8 +204,22 @@ $(".dropdown-item").on("click", function (e) {
     })
             // After data comes back from the request
             .done(function (response) {
+                $("#weather").show();
                 var results = response;
-                console.log(results);
+                var sunny = results.categories[2].data[1].float_value;
+                var sunnyLabel = results.categories[2].data[1].label;
+                var rainy = results.categories[2].data[2].float_value;
+                var rainyLabel = results.categories[2].data[2].label;                
+                var days = results.categories[2].data[0].float_value;
+                var daysLabel = results.categories[2].data[0].label;
+                console.log(days);
+                $("#sun").html(sunny);
+                $("#sunLabel").html(sunnyLabel);
+                $("#rain").html(rainy);
+                $("#rainLabel").html(rainyLabel);               
+                $("#length").html(days);
+                $("#lengthLabel").html(daysLabel);
+
 
             });
 
@@ -238,43 +252,3 @@ var grph = {
 };
 
 
-
-
-// 51 50 48 46 45 32 
-
-//var chartS = Highcharts.chart('container', {
-//    chart: {
-//        type: 'column'
-//    },
-//    title: {
-//        text: 'Stacked column chart'
-//    },
-//    xAxis: {
-//        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
-//    },
-//    yAxis: {
-//        min: 0,
-//        title: {
-//            text: 'Total fruit consumption'
-//        }
-//    },
-//    tooltip: {
-//        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
-//        shared: true
-//    },
-//    plotOptions: {
-//        column: {
-//            stacking: 'percent'
-//        }
-//    },
-//    series: [{
-//        name: 'John',
-//        data: [5, 3, 4, 7, 2]
-//    }, {
-//        name: 'Jane',
-//        data: [2, 2, 3, 2, 1]
-//    }, {
-//        name: 'Joe',
-//        data: [3, 4, 4, 2, 5]
-//    }]
-//});
