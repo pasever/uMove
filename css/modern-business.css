@@ -105,12 +105,6 @@ footer {
     }
 }
 
-/*.weather {
-    float:left;
-    width:33%; 
-    padding-left:8.5%;
-}
-*/
 #sun, #rain, #length {
     font-size: 46px;
 }
@@ -121,6 +115,7 @@ footer {
 }
 #weather {
     padding-top: 5%;
+    margin-bottom: 6%;
 }
 #length {
     margin-top: 10px;
