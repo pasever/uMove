@@ -42,7 +42,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-					<a href="index.html"><img src="../umove/img/logo.png" width="200px" /></a>
+                    <a href="index.html"><img src="img/logo.png" width="200px" /></a>
 
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +51,7 @@
                         <li>
                             <a href="about.html">About</a>
                         </li>
-                   
+
                         <li>
                             <a href="contact.html">Contact</a>
                         </li>     
@@ -77,21 +77,21 @@
                     <div class="fill" style="background-image:url('img/miami.jpg');"></div>
                     <div class="carousel-caption">
                         <h1>Miami</h1>
-						<h2>Warm climate, diverse culture and laid-back lifestyle</h2>
+                        <h2>Warm climate, diverse culture and laid-back lifestyle</h2>
                     </div>
                 </div>
                 <div class="item">
                     <div class="fill" style="background-image:url('img/portland.jpg');"></div>
                     <div class="carousel-caption">
                         <h1>Portland</h1>
-						<h2>Known for its parks, bridges and bicycle paths, as well as for its eco-friendliness</h2>
+                        <h2>Known for its parks, bridges and bicycle paths, as well as for its eco-friendliness</h2>
                     </div>
                 </div>
                 <div class="item">
                     <div class="fill" style="background-image:url('img/chicago.jpg');"></div>
                     <div class="carousel-caption">
                         <h1>Chicago</h1>
-						<h2>From towering skyscrapers to the rich cultural landscape, it’s easy to fall in love with every aspect of the Windy City</h2>
+                        <h2>From towering skyscrapers to the rich cultural landscape, it’s easy to fall in love with every aspect of the Windy City</h2>
                     </div>
                 </div>
             </div>
@@ -186,21 +186,39 @@
                                     <div id="salaries"></div>
                                     <br>
                                     <canvas id="bar-chart-horizontal" width="800" height="400"></canvas>
-<!--                                    <div id="container" style="min-width: 800px; height: 500px; margin: 0 auto"></div>-->
+                                    <!--                                    <div id="container" style="min-width: 800px; height: 500px; margin: 0 auto"></div>-->
                                     <div id="myDiv"></div>
-                                   
+                                    <div class="row" id="weather">
+                                        </hr>
+                                        <div class="col-md-4 weather text-center">
+                                            <span id="sunLabel" class="labels"></span>
+                                            </br>
+                                            <a><img src="img/sun.jpg" width="150" /></br><span id="sun"></span></a>
+                                        </div>
+                                        <div class="col-md-4 weather text-center">
+                                            <span id="rainLabel" class="labels"></span>
+                                            </br>
+                                            <a><img src="img/rain.png" width="150" /></br><span id="rain"></span></a>
+                                        </div>
+                                        <div class="col-md-4 weather text-center">
+                                            <span id="lengthLabel" class="labels"></span>
+                                            </br>
+                                            <a><img src="img/image_time.png" width="150" /></br><span id="length"></span></a>
+                                        </div>                                
+                                    </div>
+
                                     </tr>
                                     </thead>
-                                    <tbody id="City-data">
-                                    </tbody>
+                                    <!--                                    <tbody id="City-data">
+                                                                        </tbody>-->
                                 </table>
                             </div>
                         </div>
                     </div>
 
                 </div>
-            
-                
+
+
             </div>
         </div> 
         <!-- /.row --> 
@@ -226,7 +244,7 @@
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/exporting.js">
-//        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
         <!-- jQuery -->
@@ -238,9 +256,9 @@
         <!-- Script to Activate the Carousel -->
         <script src="js/main.js"></script>
         <script>
-        $('.carousel').carousel({
-            interval: 4000 //changes the speed
-        })
+                $('.carousel').carousel({
+                    interval: 4000 //changes the speed
+                });
         </script>
 
     </body>

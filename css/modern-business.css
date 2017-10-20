@@ -104,3 +104,24 @@ footer {
         height: 70%;
     }
 }
+
+/*.weather {
+    float:left;
+    width:33%; 
+    padding-left:8.5%;
+}
+*/
+#sun, #rain, #length {
+    font-size: 46px;
+}
+
+.labels {
+    font-size: 18px;
+    font-weight: bold;
+}
+#weather {
+    padding-top: 5%;
+}
+#length {
+    margin-top: 10px;
+}
