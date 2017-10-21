@@ -5,39 +5,54 @@ var config = {
     projectId: "project3-ae711",
     storageBucket: "project3-ae711.appspot.com",
     messagingSenderId: "944322481348"
-  };
-  firebase.initializeApp(config);
-  
-  var database = firebase.database();
-  
-  var clickCounter = 0;
+};
+firebase.initializeApp(config);
+
+var clickCounter = 0;
+
+var database = firebase.database();
+
+    database.ref().on("value", function (snapshot) {
+
+        var snap = snapshot.val();
+        console.log(snap);
+        var fireArray = Object.keys(snap);
+        console.log(fireArray);
+
+        var getKey = fireArray[0];
+        console.log(getKey);
+        var getObj = snap[getKey];
+        console.log(getObj);
+        var counter = getObj.clickCounter;
+        console.log(counter);
+        clickCounter = counter;
+        
+
+
+    });
+
+
 
 //var population = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/cities";
 $("#bar-chart-horizontal").hide();
 $("#weather").hide();
 
+
 $(".dropdown-item").on("click", function (e) {
     e.preventDefault();
-    
-    database.ref().on("value", function (snapshot) {
 
-    var snap = snapshot.val();
-    console.log(snap);
-    var fireArray = Object.keys(snap);
-    console.log(fireArray);
+clickCounter++;
 
-    var getKey = fireArray[0];
-    console.log(getKey);
-    var getObj = snap[getKey];
-    console.log(getObj);
-    var counter = getObj.clickCounter;
-    console.log(counter);
-    
+//console.log($(this).HTML());
 
-    }); 
-  
+var dataBase = database.ref().child("counter");
+
+    dataBase.set({
+    clickCounter: clickCounter
     
-    clickCounter++;
+});
+
+
     console.log(clickCounter);
     $("#chart").empty();
     $("#images").html("");
@@ -53,9 +68,12 @@ $(".dropdown-item").on("click", function (e) {
         console.log("contains spaces");
         userInput = userInput.replace(/\s+/g, '-');
         console.log(userInput);
-
     }
 
+
+//if (database.ref().child(userInput) == true) {
+//    
+//}
     $("#cityName").html(userInput.toUpperCase());
 
     //if (userInput)
@@ -63,7 +81,6 @@ $(".dropdown-item").on("click", function (e) {
     var queryURL2 = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/scores/";
     var queryURL3 = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/salaries/";
     var queryURL4 = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/details/";
-
 
 
 
@@ -232,27 +249,27 @@ $(".dropdown-item").on("click", function (e) {
                 var sunny = results.categories[2].data[1].float_value;
                 var sunnyLabel = results.categories[2].data[1].label;
                 var rainy = results.categories[2].data[2].float_value;
-                var rainyLabel = results.categories[2].data[2].label;                
+                var rainyLabel = results.categories[2].data[2].label;
                 var days = results.categories[2].data[0].float_value;
                 var daysLabel = results.categories[2].data[0].label;
                 console.log(days);
                 $("#sun").html(sunny);
                 $("#sunLabel").html(sunnyLabel);
                 $("#rain").html(rainy);
-                $("#rainLabel").html(rainyLabel);               
+                $("#rainLabel").html(rainyLabel);
                 $("#length").html(days);
                 $("#lengthLabel").html(daysLabel);
 
 
             });
-            
-            
-            
-            
-//        database.ref().push({
-//        clickCounter: clickCounter
-//                // dateAdded: firebase.database.ServerValue.TIMESTAMP
-//    });
+
+
+
+
+//            database.ref().push({
+//            clickCounter: clickCounter
+//                    // dateAdded: firebase.database.ServerValue.TIMESTAMP
+//        });
 
 });
 
