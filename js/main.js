@@ -9,55 +9,56 @@ var config = {
 firebase.initializeApp(config);
 
 var clickCounter = 0;
-
+var overall = [];
 var database = firebase.database();
 
-    database.ref().on("value", function (snapshot) {
+database.ref().on("value", function (snapshot) {
 
-        var snap = snapshot.val();
-        console.log(snap);
-        var fireArray = Object.keys(snap);
-        console.log(fireArray);
+    var snap = snapshot.val();
+    console.log(snap);
+    var fireArray = Object.keys(snap);
+    console.log(fireArray);
 
-        var getKey = fireArray[0];
-        console.log(getKey);
-        var getObj = snap[getKey];
-        console.log(getObj);
-        var counter = getObj.clickCounter;
-        console.log(counter);
-        clickCounter = counter;
-        
+    var getKey = fireArray[0];
+    console.log(getKey);
+    var getObj = snap[getKey];
+    console.log(getObj);
+    var counter = getObj.clickCounter;
+    console.log(counter);
+    clickCounter = counter;
 
 
-    });
+
+});
 
 
 
 //var population = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/cities";
 $("#bar-chart-horizontal").hide();
 $("#weather").hide();
+$(".hrLine").hide();
 
 
 $(".dropdown-item").on("click", function (e) {
     e.preventDefault();
 
-clickCounter++;
+    clickCounter++;
 
 //console.log($(this).HTML());
 
-var dataBase = database.ref().child("counter");
+    var dataBase = database.ref().child("counter");
 
     dataBase.set({
-    clickCounter: clickCounter
-    
-});
+        clickCounter: clickCounter
+
+    });
 
 
     console.log(clickCounter);
     $("#chart").empty();
     $("#images").html("");
     $("#bar-chart-horizontal").show();
-
+    $(".hrLine").show();
 
 
     //if (userInput)
@@ -126,7 +127,13 @@ var dataBase = database.ref().child("counter");
                     // console.log(labelObj);
                     labelObj.push(catNames);
                     var catScore = response.categories[i].score_out_of_10.toFixed(2);
-                    // console.log(catScore);
+                    //console.log(typeof parseFloat(catScore));
+                    overall.push(catScore);
+                    console.log(overall);
+
+
+
+                    //console.log(catScore.reduce(overall));
                     var dataObj = grph.data.datasets[0].data;
                     dataObj.push(catScore);
                     var catColor = response.categories[i].color;
@@ -134,10 +141,43 @@ var dataBase = database.ref().child("counter");
                     objColor.push(catColor);
                     var chartG = new Chart(document.getElementById("bar-chart-horizontal"), grph);
 
-
                 }
+                
+//                var config3 = liquidFillGaugeDefaultSettings();
+//                config3.textVertPosition = 0.8;
+//                config3.waveAnimateTime = 5000;
+//                config3.waveHeight = 0.15;
+//                config3.waveAnimate = false;
+//                config3.waveOffset = 0.25;
+//                config3.valueCountUp = false;
+//                config3.displayPercent = false;
+//                var gauge4 = loadLiquidFillGauge("fillgauge4", 123, config3);
+//                
+//                var config4 = liquidFillGaugeDefaultSettings();
+//                config4.circleThickness = 0.15;
+//                config4.circleColor = "#808015";
+//                config4.textColor = "#555500";
+//                config4.waveTextColor = "#FFFFAA";
+//                config4.waveColor = "#AAAA39";
+//                config4.textVertPosition = 0.8;
+//                config4.waveAnimateTime = 1000;
+//                config4.waveHeight = 0.05;
+//                config4.waveAnimate = true;
+//                config4.waveRise = false;
+//                config4.waveHeightScaling = false;
+//                config4.waveOffset = 0.25;
+//                config4.textSize = 0.75;
+//                config4.waveCount = 3;
+//
+//                function NewValue() {
+//                    if (Math.random() > .5) {
+//                        return Math.round(Math.random() * 100);
+//                    } else {
+//                        return (Math.random() * 100).toFixed(1);
+//                    }
+//                }
 
-
+//console.log(loadLiquidFillGauge);
             });
 
 
@@ -221,9 +261,6 @@ var dataBase = database.ref().child("counter");
                         salaries[32].salary_percentiles.percentile_75.toFixed(2));
                 salaryName.push(salaries[51].job.id, salaries[45].job.id, salaries[32].job.id);
 
-                console.log(salaryMin);
-                console.log(salaryAvg);
-                console.log(salaryMax);
                 // 51 50 48 46 45 32
                 var data = [trace1, trace2, trace3];
 
@@ -298,5 +335,3 @@ var grph = {
     }
 
 };
-
-
