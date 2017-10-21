@@ -142,7 +142,7 @@ $(".dropdown-item").on("click", function (e) {
                     var chartG = new Chart(document.getElementById("bar-chart-horizontal"), grph);
 
                 }
-                
+
 //                var config3 = liquidFillGaugeDefaultSettings();
 //                config3.textVertPosition = 0.8;
 //                config3.waveAnimateTime = 5000;
