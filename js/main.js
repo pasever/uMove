@@ -28,7 +28,6 @@ database.ref().on("value", function (snapshot) {
     clickCounter = counter;
 
 
-
 });
 
 
@@ -133,6 +132,7 @@ $(".dropdown-item").on("click", function (e) {
 
 
 
+
                     //console.log(catScore.reduce(overall));
                     var dataObj = grph.data.datasets[0].data;
                     dataObj.push(catScore);
@@ -142,7 +142,9 @@ $(".dropdown-item").on("click", function (e) {
                     var chartG = new Chart(document.getElementById("bar-chart-horizontal"), grph);
 
                 }
-
+                console.log(overall);
+                var sum = overall.reduce((total, amount) => total + amount); 
+                console.log(sum);
 //                var config3 = liquidFillGaugeDefaultSettings();
 //                config3.textVertPosition = 0.8;
 //                config3.waveAnimateTime = 5000;
