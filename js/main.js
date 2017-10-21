@@ -1,12 +1,16 @@
 var config = {
-    apiKey: "AIzaSyC5AelpScvlFmvMj7LmkSdyU-bJWeEu-cI",
-    authDomain: "umove-c0450.firebaseapp.com",
-    databaseURL: "https://umove-c0450.firebaseio.com",
-    projectId: "umove-c0450",
-    storageBucket: "umove-c0450.appspot.com",
-    messagingSenderId: "175940356512"
-};
-firebase.initializeApp(config);
+    apiKey: "AIzaSyA-YYEL0pDCpuA4guq5O12kvzhnOAhhNi4",
+    authDomain: "project3-ae711.firebaseapp.com",
+    databaseURL: "https://project3-ae711.firebaseio.com",
+    projectId: "project3-ae711",
+    storageBucket: "project3-ae711.appspot.com",
+    messagingSenderId: "944322481348"
+  };
+  firebase.initializeApp(config);
+  
+  var database = firebase.database();
+  
+  var clickCounter = 0;
 
 //var population = "https://api.teleport.org/api/urban_areas/slug:" + userInput + "/cities";
 $("#bar-chart-horizontal").hide();
@@ -14,8 +18,27 @@ $("#weather").hide();
 
 $(".dropdown-item").on("click", function (e) {
     e.preventDefault();
+    
+    database.ref().on("value", function (snapshot) {
 
+    var snap = snapshot.val();
+    console.log(snap);
+    var fireArray = Object.keys(snap);
+    console.log(fireArray);
 
+    var getKey = fireArray[0];
+    console.log(getKey);
+    var getObj = snap[getKey];
+    console.log(getObj);
+    var counter = getObj.clickCounter;
+    console.log(counter);
+    
+
+    }); 
+  
+    
+    clickCounter++;
+    console.log(clickCounter);
     $("#chart").empty();
     $("#images").html("");
     $("#bar-chart-horizontal").show();
@@ -222,6 +245,14 @@ $(".dropdown-item").on("click", function (e) {
 
 
             });
+            
+            
+            
+            
+//        database.ref().push({
+//        clickCounter: clickCounter
+//                // dateAdded: firebase.database.ServerValue.TIMESTAMP
+//    });
 
 });
 

@@ -6,6 +6,14 @@
 
 /* Global Styles */
 
+/*!
+ * Start Bootstrap - Modern Business (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+/* Global Styles */
+
 html,
 body {
     height: 100%;
@@ -15,16 +23,45 @@ body {
     padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
+/* Single-direction drop shadow */
+
+#images {
+	
+}
+
+.labels {
+	font-family: 'Saira Extra Condensed', sans-serif;	
+}
+
+hr {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+p {font-family: 'Saira Extra Condensed', sans-serif;}
+
 h1 {
+	font-family: 'Saira Extra Condensed', sans-serif;
 	font-size: 60px;
 }
 
+h2 {font-family: 'Saira Extra Condensed', sans-serif;}
+
+h3 {
+	font-family: 'Saira Extra Condensed', sans-serif;
+	font-size: 32px;
+	text-align: center;
+}
 h5{
+	font-family: 'Saira Extra Condensed', sans-serif;
 	font-size: 18px;
 	
 }
 
-.dropdown-item{
+
+
+.dropdown-item {
 	text-align: center;
 }
 .img-portfolio {
@@ -82,7 +119,8 @@ header.carousel .fill {
 /* Footer Styles */
 
 footer {
-    margin: 50px 0;
+    font-size: 24px;
+	margin: 50px 0;
 	text-align: center;
 }
 
